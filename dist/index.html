@@ -11,12 +11,12 @@
 </head>
 <body>
 
-  <div class="container-fluid">
+  <div class="container">
     <div class="row h-100">
       <div class="col-md-4 bg-light">
         <aside>
           <h1>Projects</h1>
-          <ul class="list-group list-group-flush mb-4">
+          <ul class="list-group list-group-flush mb-4" id="projects">
             <li class="list-group-item">
               First project
             </li>
@@ -52,7 +52,7 @@
                 <input type="text" class="form-control" name="project" id="projectInput" placeholder="Add project name">
             </div>
             <div class="modal-footer">
-              <button type="submit" class="btn btn-primary">Add Project</button>
+              <button type="submit" class="btn btn-primary" id="add-project">Add Project</button>
             </div>
           </form>
           </div>
@@ -68,7 +68,7 @@
         </div>
 
         <ul class="list-group list-group-flush mb-4">
-          <li class="list-group-item list-group-item-action border-danger border-width border-left border-bottom-0">
+          <li class="task-list-item mb-3 list-group-item list-group-item-action border-danger border-left border-bottom-0">
             <div class="d-flex align-items-center">
               <input type="checkbox" id="todo1" class="custom-checkbox">
               <label for="todo1" class="ml-3 d-flex justify-content-between w-100 align-items-center mb-0">
@@ -80,7 +80,7 @@
               </label>
             </div>
           </li>
-          <li class="list-group-item list-group-item-action">
+          <li class="task-list-item mb-3 list-group-item list-group-item-action border-warning">
             <div class="d-flex align-items-center">
               <input type="checkbox" id="todo2" class="custom-checkbox">
               <label for="todo2" class="ml-3 d-flex justify-content-between w-100 align-items-center mb-0">
@@ -104,8 +104,8 @@
                 </button>
               </div>
               <div class="modal-body">
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    Id asperiores dolores, commodi doloremque aperiam, eveniet culpa necessitatibus debitis aspernatur dolorem 
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Id asperiores dolores, commodi doloremque aperiam, eveniet culpa necessitatibus debitis aspernatur dolorem
                     voluptatum maxime fugit repellendus incidunt.
                   </p>
                   <div class="d-flex justify-content-between">
@@ -154,7 +154,7 @@
                   </div>
                   <div class="my-2">
                     <textarea type="text" class="form-control" name="description" id="todoDescription" placeholder="Add description"></textarea>
-                  </div>       
+                  </div>
               </div>
               <div class="modal-footer">
                 <button type="submit" class="btn btn-primary">Add Task</button>
@@ -164,7 +164,7 @@
           </div>
         </div>
 
-        
+
       </div>
     </div>
 

@@ -4,6 +4,8 @@
   width: 20px;
 }
 
-.border-width {
-  border-left-width:5px !important;
+.task-list-item {
+  border-radius: 6px !important;
+  box-shadow: 0 0 5px rgb(0 0 0 / 10%);
+  border-left-width: 5px !important;
 }
