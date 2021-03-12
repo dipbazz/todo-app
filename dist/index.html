@@ -4,11 +4,50 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <title>To do app</title>
 </head>
 <body>
 
-  <h1>Hello world!</h1>
+  <div class="container-fluid">
+    <div class="row h-100">
+      <div class="col-md-4 bg-success">
+        <aside>
+          <h1>Projects</h1>
+          <form>
+            <input type="text" class="form-control" name="project" id="projectInput">
+            <input type="submit" class="btn btn-primary mt-2" value="+Add project">
+          </form>
+        </aside>
+      </div>
+      <div class="col-md-8 bg-info">
+        <ul>
+          <h1 class="text-center">Todo List</h1>
+          <li>Make to do</li>
+        </ul>
+        <form class="form">
+          <div class="d-flex">
+            <input type="text" class="form-control w-50" name="title" id="todoTitle" placeholder="Add title">
+            <input type="date" class="form-control w-50" name="date" id="todoDate" placeholder="Add date">
+          </div>
+          <div class="my-2">
+            <select class="form-control priority-option mb-2">
+              <option selected>Prioroty</option>
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+            <textarea type="text" class="form-control" name="description" id="todoDescription" placeholder="Add description"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Add Task</button>
+          
+        </form>
+      </div>
+    </div>
+
+  </div>
+  
   <script src="main.js"></script>
 </body>
 </html>
