@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
   <title>To do app</title>
 </head>
 <body>
@@ -15,6 +16,20 @@
       <div class="col-md-4 bg-success">
         <aside>
           <h1>Projects</h1>
+          <ul class="list-group list-group-flush mb-4">
+            <li class="list-group-item">
+              First project
+            </li>
+            <li class="list-group-item">
+              Second proejct
+            </li>
+            <li class="list-group-item">
+              Third project
+            </li>
+            <li class="list-group-item">
+              Last project
+            </li>
+          </ul>
           <form>
             <input type="text" class="form-control" name="project" id="projectInput">
             <input type="submit" class="btn btn-primary mt-2" value="+Add project">
@@ -22,9 +37,56 @@
         </aside>
       </div>
       <div class="col-md-8 bg-info">
-        <ul>
-          <h1 class="text-center">Todo List</h1>
-          <li>Make to do</li>
+        <h1 class="text-center">Todo List</h1>
+        <ul class="list-group list-group-flush mb-4">
+          <li class="list-group-item">
+            <div class="d-flex align-items-center">
+              <input type="checkbox" id="todo1" class="custom-checkbox">
+              <label for="todo1" class="ml-3 d-flex justify-content-between w-100 align-items-center mb-0">
+                <div class="mb-0">
+                  <h3>Heading of to do</h3>
+                  <p class="mb-0"><span>Due Date:</span> <span>2021-03-12</span></p>
+                </div>
+                <a href="#" class="link">Details</a>
+              </label>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="d-flex align-items-center">
+              <input type="checkbox" id="todo2" class="custom-checkbox">
+              <label for="todo2" class="ml-3 d-flex justify-content-between w-100 align-items-center mb-0">
+                <div class="mb-0">
+                  <h3>Heading of to do</h3>
+                  <p class="mb-0"><span>Due Date:</span> <span>2021-03-12</span></p>
+                </div>
+                <a href="#" class="link">Details</a>
+              </label>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="d-flex align-items-center">
+              <input type="checkbox" id="todo3" class="custom-checkbox">
+              <label for="todo3" class="ml-3 d-flex justify-content-between w-100 align-items-center mb-0">
+                <div class="mb-0">
+                  <h3>Heading of to do</h3>
+                  <p class="mb-0"><span>Due Date:</span> <span>2021-03-12</span></p>
+                </div>
+                <a href="#" class="link">Details</a>
+              </label>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="d-flex align-items-center">
+              <input type="checkbox" id="todo4" class="custom-checkbox">
+              <label for="todo4" class="ml-3 d-flex justify-content-between w-100 align-items-center mb-0">
+                <div class="mb-0">
+                  <h3>Heading of to do</h3>
+                  <p class="mb-0"><span>Due Date:</span> <span>2021-03-12</span></p>
+                </div>
+                <a href="#" class="link">Details</a>
+              </label>
+            </div>
+          </li>
         </ul>
         <form class="form">
           <div class="d-flex">
@@ -33,7 +95,7 @@
           </div>
           <div class="my-2">
             <select class="form-control priority-option mb-2">
-              <option selected>Prioroty</option>
+              <option selected disabled>Prioroty</option>
               <option value="low">Low</option>
               <option value="medium">Medium</option>
               <option value="high">High</option>
@@ -41,13 +103,13 @@
             <textarea type="text" class="form-control" name="description" id="todoDescription" placeholder="Add description"></textarea>
           </div>
           <button type="submit" class="btn btn-primary">Add Task</button>
-          
+
         </form>
       </div>
     </div>
 
   </div>
-  
+
   <script src="main.js"></script>
 </body>
 </html>
