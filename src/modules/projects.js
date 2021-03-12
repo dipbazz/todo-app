@@ -13,9 +13,9 @@ class Projects {
 }
 
 
-const projects = [new Projects("Today"), new Projects("Grocories")];
+const projects = [];
 
-localStorage.setItem('projects', JSON.stringify(projects));
+
 
 const addProject = title => {
   const projects = JSON.parse(localStorage.getItem('projects'));
@@ -27,4 +27,18 @@ const addProject = title => {
 
 const getProjects = () => ( JSON.parse(localStorage.getItem('projects')) );
 
-export { getProjects, addProject };
+
+const storeProject = () => {
+  if (localStorage.getItem('projects')){
+  }else {
+     localStorage.setItem('projects', JSON.stringify(projects));
+ 
+  }
+}
+
+window.addEventListener('DOMContentLoaded',() => {
+  storeProject()
+})
+
+
+export { getProjects, addProject,storeProject };
