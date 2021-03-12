@@ -3,3 +3,7 @@
   height: 20px;
   width: 20px;
 }
+
+.border-width {
+  border-left-width:5px !important;
+}
