@@ -1,24 +1,31 @@
 import 'bootstrap';
 import 'jquery';
-import $ from 'jquery'
+
 import { getProjects, addProject } from './modules/projects';
-import {project_list} from './dom/projects'
+import { projectList } from './dom/projects';
+import { todoContainer } from './dom/todo'
 
 
 const loadProject = () => {
-  return document.getElementById('projects').innerHTML = getProjects().map( project => {
-    return project_list(project.title);
-  }).join('');
-}
+  document.getElementById('projects').innerHTML = getProjects().map(project => projectList(project.title)).join('');
+};
 
-loadProject()
+loadProject();
 
 document.getElementById('add-project').addEventListener('click', (e) => {
   e.preventDefault();
   const { project } = e.target.form;
-  console.log(addProject(project.value));
-  e.target.form.reset()
-  $('#projectModal').modal('hide')
-  loadProject()
-})
+  addProject(project.value);
+  e.target.form.reset();
+  $('#projectModel').modal('hide'); // eslint-disable-line
+  loadProject();
+});
 
+
+document.querySelectorAll('.project-list-item').forEach(item => {
+  item.addEventListener('click', (e) => {
+    const project = e.target.innerHTML;
+
+    document.getElementById('task-container').innerHTML = todoContainer(project);
+  })
+})

@@ -1,1 +1,7 @@
-const detailsLink = document.querySelector('.details-link');
+const todos = {
+  'projectname': [
+
+  ]
+}
+
+todos['project']
