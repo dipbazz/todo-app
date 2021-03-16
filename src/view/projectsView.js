@@ -16,12 +16,6 @@ class projectsView {
         document.querySelector('aside').append(this.projects)
     }
 
-
-    .addEventListener('click', (e) => {
-        e.preventDefault()
-        console.log(e.target)
-    })
-
 }
 
 export default projectsView

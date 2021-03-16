@@ -1,17 +1,50 @@
 import 'bootstrap'
 import 'jquery'
+
 import  Projects  from './model/projects';
 import projectsController from './controller/projectsController'
 import projectsView from "./view/projectsView";
 
-const model = new Projects();
-const view = new projectsView()
-const controller = new projectsController(model, view);
+import App from './lib/App.js';
+import API from './lib/Api.js'
 
-controller.showProjects()
+// const model = new Projects();
+// const view = new projectsView()
+// const controller = new projectsController(model, view);
+
+// controller.showProjects()
 
 
+const app = new App('#root');
 
+const projectTemplate = project =>{
+  return `
+    <li class="list-group-item">
+      ${project.title}
+    </li>
+  `
+}
+
+app.addComponent({
+  name: 'projects',
+  model: {
+    projects: []
+  },
+  view(model) {
+    return `
+      <ul class="list-group list-group-flush mb-4" id="projects">
+        ${model.projects.map( project => (projectTemplate(project))).join('')}
+      </ul>
+    `
+  },
+  controller(model) {
+    const projects = API.getProjects();
+    model.projects.push(projects);
+    app.updateView();
+  }
+});
+
+app.showComponent('projects');
 
 
 
