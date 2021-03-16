@@ -1,7 +1,9 @@
 export default {
   getProjects() {
-    return {
-        'title': 'project one'
-    }
+    return JSON.parse(localStorage.getItem('projects'))
+  },
+
+  setProject(project) {
+    localStorage.setItem('projects', JSON.stringify(project))
   }
-}
+};

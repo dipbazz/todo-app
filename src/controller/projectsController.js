@@ -1,20 +1,19 @@
-import Projects  from '../model/projects'
+import API from '../lib/Api.js'
 
-class projectsController {
-  constructor(project,projectsView) {
-    this.project = project
-    this.projectsView = projectsView
+const projectController = (model,app) => {
+  function addProject() {
+    document.getElementById('add-project').addEventListener('click', (e) => {
+      const projectInput = document.getElementById('projectInput').value
+      const obj = {
+        title:projectInput
+      }
+      API.setProject(obj)
+      app.updateView()
+    })
   }
 
-  addProjects() {
-    
-  }
-
-  showProjects() {
-    const projects = [{ 'title' : 'First' }, { 'title' : 'Second' }]
-    this.projectsView.render(projects)
-  }
+  return addProject()
 }
 
 
-export default projectsController 
+export default projectController;

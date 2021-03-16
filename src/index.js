@@ -1,9 +1,9 @@
 import 'bootstrap'
 import 'jquery'
 
-import  Projects  from './model/projects';
-import projectsController from './controller/projectsController'
-import projectsView from "./view/projectsView";
+// import  Projects  from './model/projects';
+import projectController from './controller/projectsController'
+// import projectsView from "./view/projectsView";
 
 import App from './lib/App.js';
 import API from './lib/Api.js'
@@ -35,12 +35,13 @@ app.addComponent({
       <ul class="list-group list-group-flush mb-4" id="projects">
         ${model.projects.map( project => (projectTemplate(project))).join('')}
       </ul>
-    `
+    `;
   },
   controller(model) {
     const projects = API.getProjects();
     model.projects.push(projects);
-    app.updateView();
+    projectController(model,app)
+    app.updateView()
   }
 });
 
