@@ -18,12 +18,10 @@
       <div class="col-md-4 bg-light">
         <aside>
           <h1>Projects</h1>
-          <ul class="list-group list-group-flush mb-4" id="projects">
-            <li class="list-group-item">
-              First project
-            </li>
-          </ul>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#projectModel">
+          <div id="projects">
+
+          </div>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#projectModal">
             +Add project
           </button>
         </aside>
@@ -31,16 +29,16 @@
 
 
       <!-- Project Modal -->
-      <div class="modal fade" id="projectModel" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="projectModelLabel" aria-hidden="true">
+      <div class="modal fade" id="projectModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="projectModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="projectModelLabel">Add New Project</h5>
+              <h5 class="modal-title" id="projectModalLabel">Add New Project</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <form>
+            <form id="project-form">
             <div class="modal-body">
                 <input type="text" class="form-control" name="project" id="projectInput" placeholder="Add project name">
             </div>

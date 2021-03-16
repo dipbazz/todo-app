@@ -1,91 +1,64 @@
 import 'bootstrap'
 import 'jquery'
 
-// import  Projects  from './model/projects';
-import projectController from './controller/projectsController'
-// import projectsView from "./view/projectsView";
+const form = document.getElementById('project-form');
 
-import App from './lib/App.js';
-import API from './lib/Api.js'
+const projectModel = () => {
+  let projects = [];
 
-// const model = new Projects();
-// const view = new projectsView()
-// const controller = new projectsController(model, view);
+  const all = () => {
+    return projects;
+  }
 
-// controller.showProjects()
+  const save = (project) => {
+    console.log(project);
+    projects.push(project)
+    console.log(projects);
+  }
 
-
-const app = new App('#root');
-
-const projectTemplate = project =>{
-  return `
-    <li class="list-group-item">
-      ${project.title}
-    </li>
-  `
+  return { all, save };
 }
 
-app.addComponent({
-  name: 'projects',
-  model: {
-    projects: []
-  },
-  view(model) {
-    return `
-      <ul class="list-group list-group-flush mb-4" id="projects">
-        ${model.projects.map( project => (projectTemplate(project))).join('')}
+const projectView = () => {
+  const render = projects => {
+    const element = `
+      <ul class="list-group list-group-flush mb-4">
+       ${projects.map((project, index) => {
+         return `<li class="list-group-item" data-index=${index}> ${project.title}</li>`
+        }).join('')}
       </ul>
-    `;
-  },
-  controller(model) {
-    const projects = API.getProjects();
-    model.projects.push(projects);
-    projectController(model,app)
-    app.updateView()
+    `
+    document.getElementById('projects').innerHTML = element;
   }
-});
 
-app.showComponent('projects');
+  return { render };
+}
 
+const projectController = (m) => {
+  let model = m();
 
+  const addProject = (project) => {
+    const new_project = {title: project}
+    model.save(new_project);
+  }
 
+  const showProjects = (projects) => {
+    projectView().render(model.all());
+    console.log(model.all())
+  }
 
+  return { addProject, showProjects };
+}
 
-
-
-
-
-
-
-
-// import 'bootstrap';
-// import 'jquery';
-
-// import projectController from './controller/projectsController'
-// import { projectList } from './dom/projects';
-// import { todoContainer } from './dom/todo'
-
-
-// const loadProject = () => {
-//   document.getElementById('projects').innerHTML = getProjects().map(project => projectList(project.title)).join('');
-// };
-
-// loadProject();
-
-// document.getElementById('add-project').addEventListener('click', (e) => {
-//   e.preventDefault();
-//   const { project } = e.target.form;
-//   addProject(project.value);
-//   e.target.form.reset();
-//   $('#projectModel').modal('hide'); // eslint-disable-line
-//   loadProject();
-// });
-
-
-// document.querySelectorAll('.project-list-item').forEach(item => {
-//   item.addEventListener('click', (e) => {
-//     const project = e.target.innerHTML;
-
-//     document.getElementById('task-container').innerHTML = todoContainer(project);
-//   })
-// })
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  const form = e.target;
+  const { project } = form;
+  if(project.value != "" && project.value != " "){
+    const controller = projectController(projectModel);
+    controller.addProject(project.value);
+    controller.showProjects();
+    form.reset();
+    $('#projectModal').modal('hide');
+  }
+})
