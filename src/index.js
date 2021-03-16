@@ -1,64 +1,42 @@
 import 'bootstrap'
 import 'jquery'
+import projectModel from './model/projectModel'
+import projectController from './controller/projectController'
+import projectView from './view/projectView'
+import todoModel from './model/todoModel'
+import todoController from './controller/todoController'
+import todoView from './view/todoView'
 
 const form = document.getElementById('project-form');
-
-const projectModel = () => {
-  let projects = [];
-
-  const all = () => {
-    return projects;
-  }
-
-  const save = (project) => {
-    console.log(project);
-    projects.push(project)
-    console.log(projects);
-  }
-
-  return { all, save };
-}
-
-const projectView = () => {
-  const render = projects => {
-    const element = `
-      <ul class="list-group list-group-flush mb-4">
-       ${projects.map((project, index) => {
-         return `<li class="list-group-item" data-index=${index}> ${project.title}</li>`
-        }).join('')}
-      </ul>
-    `
-    document.getElementById('projects').innerHTML = element;
-  }
-
-  return { render };
-}
-
-const projectController = (m) => {
-  let model = m();
-
-  const addProject = (project) => {
-    const new_project = {title: project}
-    model.save(new_project);
-  }
-
-  const showProjects = (projects) => {
-    projectView().render(model.all());
-    console.log(model.all())
-  }
-
-  return { addProject, showProjects };
-}
+const todoForm = document.getElementById('todo-form')
 
 form.addEventListener('submit', e => {
   e.preventDefault();
   const form = e.target;
   const { project } = form;
   if(project.value != "" && project.value != " "){
-    const controller = projectController(projectModel);
+    const controller = projectController(projectModel());
     controller.addProject(project.value);
     controller.showProjects();
     form.reset();
     $('#projectModal').modal('hide');
   }
+})
+
+todoForm.addEventListener('submit', e => {
+  e.preventDefault();
+  const form = e.target;
+  const { title,priority,date,description } = form;
+  if(title.value != "" && title.value != " "){
+    const controller = todoController(todoModel());
+    controller.addTodo(title.value,priority.value,date.value,description.value);
+    controller.showTodos();
+    form.reset();
+    $('#todoModal').modal('hide');
+  }
+})
+
+document.addEventListener('DOMContentLoaded', () => {
+  projectView().render(projectModel().all())
+  todoView().render(todoModel().all())
 })

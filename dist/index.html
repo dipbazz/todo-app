@@ -11,7 +11,6 @@
 </head>
 <body>
 
-  <div id="root"> skdlfjlskfdjl</div>
 
   <div class="container">
     <div class="row h-100">
@@ -49,10 +48,84 @@
           </div>
         </div>
       </div>
+      <div class="col-md-8" id="task-list-container">
+        <h1 class="text-center">Project title</h1>
+        <div  class="d-flex justify-content-end mb-2">
+          <button type="button" class="btn btn-success" data-toggle="modal" data-target="#todoModal">
+            Add Task
+          </button>
+        </div>
+        <div id="todos">
 
-      <div id="task-container" class="col-md-8">
-
+        </div>
+        <!-- Add Todo Detail Modal -->
+        <div class="modal fade" id="detailModel1" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="detailModelLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="detailModelLabel">Heading of detail</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Id asperiores dolores, commodi doloremque aperiam, eveniet culpa necessitatibus debitis aspernatur dolorem
+                    voluptatum maxime fugit repellendus incidunt.
+                  </p>
+                  <div class="d-flex justify-content-between">
+                    <span>Due date: 2021-10-10</span>
+                    <span>High</span>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-outline-success">Edit</button>
+                <button type="submit" class="btn btn-outline-danger">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Add Todo Modal -->
+        <div class="modal fade" id="todoModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="todoModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="todoModalLabel">Add Todo Task</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <form class="form" id='todo-form'>
+              <div class="modal-body">
+              <div class="form-group">
+                <input type="text" class="form-control" name="title" id="todoTitle" placeholder="Add title">
+              </div>
+                  <div class="row">
+                    <div class="col">
+                      <select class="form-control priority-option mb-2" name='priority'>
+                        <option selected disabled>Prioroty</option>
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                      </select>
+                    </div>
+                    <div class="col">
+                      <input type="date" class="form-control" name="date" id="todoDate" placeholder="Add date">
+                    </div>
+                  </div>
+                  <div class="my-2">
+                    <textarea type="text" class="form-control" name="description" id="todoDescription" placeholder="Add description"></textarea>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Add Task</button>
+              </div>
+            </form>
+            </div>
+          </div>
+        </div>
       </div>
+      
     </div>
 
   </div>
