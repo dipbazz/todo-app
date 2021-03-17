@@ -6,25 +6,29 @@ const todoModel = () => {
       return {title: todo,priority:priority,date: dueDate,description:description}
     }
 
-    const all = () => {
+    const all = (project_id) => {
       console.log(getProject(0));
-      return JSON.parse(localStorage.getItem('todos')) || [];
+      const project = getProject(project_id);
+      return JSON.parse(localStorage.getItem(project.title)) || [];
     }
 
-    const save = (todo) => {
-      const todos = all()
+    const save = (todo, project_id) => {
+      console.log(project_id)
+      const project = getProject(project_id)
+      const todos = all(project_id)
       if (todos) {
         console.log(todos)
         todos.push(todo)
-        localStorage.setItem('todos', JSON.stringify(todos))
+        localStorage.setItem(project.title, JSON.stringify(todos))
       }  else {
-        localStorage.setItem('todos', JSON.stringify([todo]))
+        localStorage.setItem(project.title, JSON.stringify([todo]))
       }
 
     }
 
+
     const get = (todo) => {
-      const todos = all()
+      const todos = all(0)
       return todos[todo.title]
     }
 
