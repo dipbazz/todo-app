@@ -11,7 +11,6 @@ const projectModel = () => {
     const save = (project) => {
       const projects = all()
       if (projects) {
-        console.log(projects)
         projects.push(project)
         localStorage.setItem('projects', JSON.stringify(projects))
       }  else {
