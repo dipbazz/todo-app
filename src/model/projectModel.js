@@ -1,7 +1,7 @@
 const projectModel = () => {
 
     const project = (title) =>{
-      return { title: title, tasks: [{"title":"first task","priority":"low","date":"2021-03-29","description":""}] }
+      return { title: title }
     }
 
     const all = () => {
@@ -24,6 +24,7 @@ const projectModel = () => {
       const projects = all()
       return projects[id]
     }
+
 
 
     return { project, all, save, get };
