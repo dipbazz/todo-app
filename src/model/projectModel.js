@@ -1,11 +1,12 @@
 const projectModel = () => {
 
+ 
     const project = (title) =>{
       return { title: title }
     }
 
     const all = () => {
-      return JSON.parse(localStorage.getItem('projects')) || [];
+      return JSON.parse(localStorage.getItem('projects')) || [ {title: 'Today'},{title:'7-Days'}];
     }
 
     const save = (project) => {

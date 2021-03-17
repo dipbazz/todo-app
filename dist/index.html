@@ -61,11 +61,13 @@
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="todoModalLabel">Add Todo Task</h5>
+                <h5 class="modal-title d-none" id="todoModalLabel1">Update Todo Task</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <form class="form" id='todo-form'>
+                <input type="hidden" name="id">
               <div class="modal-body">
               <div class="form-group">
                 <input type="text" class="form-control" name="title" id="todoTitle" placeholder="Add title">
@@ -88,7 +90,8 @@
                   </div>
               </div>
               <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Add Task</button>
+                <button type="submit" class="btn btn-primary add-task-btn">Add Task</button>
+                <button type="submit" class="btn btn-success update-task-btn">Update Task</button>
               </div>
             </form>
             </div>

@@ -3,7 +3,7 @@ const todoView = () => {
       const element = `
       <h1 class="text-center" data-project-index="${project_id}" id="project-title">${project.title}</h1>
       <div  class="d-flex justify-content-end mb-2">
-        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#todoModal">
+        <button type="button" class="btn btn-success add-todo" data-toggle="modal" data-target="#todoModal">
           Add Task
         </button>
       </div>
@@ -24,6 +24,7 @@ const todoView = () => {
           </li>
 
           ${detailTemplate(todo, index, project_id)}
+          
         `
        }).join('')}
       </ul>
@@ -52,7 +53,7 @@ const todoView = () => {
                 </div>
             </div>
             <div class="modal-footer">
-              <button type="submit" class="btn btn-outline-success">Edit</button>
+              <button type="submit" class="btn btn-outline-success edit-todo" data-toggle="modal" data-target="#todoModal" data-todo="${index}" data-project="${project_id}">Edit</button>
               <button type="submit" class="btn btn-outline-danger delete-todo" data-todo="${index}" data-project="${project_id}" >Delete</button>
             </div>
           </div>
@@ -61,11 +62,26 @@ const todoView = () => {
       `;
     }
 
+    const updateTodoModel = (todo, todo_id) => {
+      const form = document.getElementById('todo-form');
+      console.log(todo)
+      const { title, priority, date, description, id } = form;
+      console.log(priority.options)
+      title.value = todo.title
+      priority.value = todo.priority
+      date.value = todo.date
+      description.value = todo.description
+      id.value = todo_id
+
+      document.querySelector('.add-task-btn').style.display = 'none'
+      document.querySelector('.update-task-btn').style.display = 'block'
+      
+    }
     const priorityClass = priority => {
       return priority == 'high' ? 'danger' : priority == 'medium' ? 'warning' : 'info';
     }
 
-    return { render };
+    return { render, updateTodoModel };
 }
 
 export default todoView;
