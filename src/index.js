@@ -15,7 +15,7 @@ form.addEventListener('submit', e => {
   const form = e.target;
   const { project } = form;
   if(project.value != "" && project.value != " "){
-    const controller = projectController(projectModel());
+    const controller = projectController(projectModel, projectView);
     controller.addProject(project.value);
     controller.showProjects();
     form.reset();
@@ -28,15 +28,25 @@ todoForm.addEventListener('submit', e => {
   const form = e.target;
   const { title,priority,date,description } = form;
   if(title.value != "" && title.value != " "){
-    const controller = todoController(todoModel());
+    const controller = todoController(todoModel, todoView);
     controller.addTodo(title.value,priority.value,date.value,description.value);
-    controller.showTodos();
+    // controller.showTodos(0);
     form.reset();
     $('#todoModal').modal('hide');
   }
 })
 
 document.addEventListener('DOMContentLoaded', () => {
-  projectView().render(projectModel().all())
-  todoView().render(todoModel().all())
+  const projects = projectModel().all()
+  projectController(projectModel, projectView).showProjects();
+  if(projects.length > 0) {
+    todoController(todoModel, todoView).showTodos();
+  }
+})
+
+document.addEventListener('click', e => {
+  if (e.target.classList.contains('project-item')){
+    const controller = todoController(todoModel, todoView);
+    controller.showTodos(parseInt(e.target.getAttribute('data-index')));
+  }
 })

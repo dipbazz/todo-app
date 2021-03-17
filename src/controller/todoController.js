@@ -1,16 +1,17 @@
-const todoController = (m) => {
-    let model = m;
-  
+const todoController = (todoModel, todoView) => {
+    let model = todoModel();
+    let view = todoView();
+
     const addTodo = (todo,priority,dueDate,description) => {
-      const new_todo = {title: todo,priority:priority,date: dueDate,description:description}
+      const new_todo = model.todo(todo, priority, dueDate, description)
       model.save(new_todo);
     }
-  
-    const showTodos = (todos) => {
-      todoView().render(model.all());
-      console.log(model.all())
+
+    const showTodos = (project_id = 0) => {
+      view.render(model.getProject(project_id), model.getProject(project_id).tasks);
     }
-  
+
+
     return { addTodo, showTodos };
 }
 

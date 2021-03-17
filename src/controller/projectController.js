@@ -1,16 +1,16 @@
-const projectController = (m) => {
-    let model = m;
-  
-    const addProject = (project) => {
-      const new_project = {title: project}
+const projectController = (projectModel, projectView) => {
+    let model = projectModel();
+    let view = projectView();
+
+    const addProject = (title) => {
+      const new_project = model.project(title)
       model.save(new_project);
     }
-  
+
     const showProjects = (projects) => {
-      projectView().render(model.all());
-      console.log(model.all())
+      view.render(model.all());
     }
-  
+
     return { addProject, showProjects };
 }
 
