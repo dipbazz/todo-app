@@ -27,10 +27,12 @@ todoForm.addEventListener('submit', e => {
   e.preventDefault();
   const form = e.target;
   const { title,priority,date,description } = form;
+  const project_id = document.getElementById('project-title').getAttribute('data-project-index');
+  console.log(project_id,'11111')
   if(title.value != "" && title.value != " "){
     const controller = todoController(todoModel, todoView);
-    controller.addTodo(title.value,priority.value,date.value,description.value);
-    // controller.showTodos(0);
+    controller.addTodo(title.value,priority.value,date.value,description.value, parseInt(project_id));
+    controller.showTodos(project_id);
     form.reset();
     $('#todoModal').modal('hide');
   }
@@ -49,4 +51,10 @@ document.addEventListener('click', e => {
     const controller = todoController(todoModel, todoView);
     controller.showTodos(parseInt(e.target.getAttribute('data-index')));
   }
+  if(e.target.classList.contains('link')) {
+    const todo = {"title":"How To Invest in Your 20'","priority":"…low","date":"2021-03-03","description":"asdasd"}
+    todoView().detailTemplate(todo)
+  }
 })
+
+
