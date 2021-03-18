@@ -30,6 +30,13 @@
   background-color: #fff;
 }
 
-.task-completed {
+.task-completed,
+.task-completed:hover {
+  background: #f1f2f6;
+  color: #ced6e0;
+}
+
+.task-completed .task-title,
+.task-completed:hover .task-title {
   text-decoration: line-through;
 }

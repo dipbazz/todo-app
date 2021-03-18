@@ -11,8 +11,8 @@ const todoModel = () => {
 
   const all = (projectId) => {
     const project = getProject(projectId);
-
-    return JSON.parse(localStorage.getItem(project.title)) || [];
+    const todos = JSON.parse(localStorage.getItem(project.title)) || [];
+    return todos.sort((a, b) => { return (a.isCompleted - b.isCompleted)})
   };
 
   const save = (todo, projectId) => {
