@@ -1,57 +1,59 @@
-import projectModel from '../model/projectModel'
+import projectModel from './projectModel';
 
 const todoModel = () => {
+  const todo = (title, priority, dueDate, description) => ({
+    title, priority, date: dueDate, description, isCompleted: false,
+  });
 
-    const todo = (title, priority, dueDate, description) => {
-      return {title: title,priority:priority,date: dueDate,description:description}
-    }
 
-    const all = (project_id) => {
-      const project = getProject(project_id);
-      return JSON.parse(localStorage.getItem(project.title)) || [];
-    }
+  const getProject = (id) => projectModel().get(id);
 
-    const save = (todo, project_id) => {
-      const project = getProject(project_id)
-      const todos = all(project_id)
-      if (todos) {
-        todos.push(todo)
-        localStorage.setItem(project.title, JSON.stringify(todos))
-      }  else {
-        localStorage.setItem(project.title, JSON.stringify([todo]))
-      }
-    }
 
-    const remove = (project_id, todo_id) => {
-      const todos = all(project_id);
-      const project = getProject(project_id);
-      todos.splice(todo_id, 1);
+  const all = (projectId) => {
+    const project = getProject(projectId);
+
+    return JSON.parse(localStorage.getItem(project.title)) || [];
+  };
+
+  const save = (todo, projectId) => {
+    const project = getProject(projectId);
+    const todos = all(projectId);
+    if (todos) {
+      todos.push(todo);
       localStorage.setItem(project.title, JSON.stringify(todos));
+    } else {
+      localStorage.setItem(project.title, JSON.stringify([todo]));
     }
+  };
 
-    const edit = (project_id, todo_id, new_todo) => {
-      const todos = all(project_id)
-      const todo = todos[todo_id]
-      const project = getProject(project_id);
-      todo.title = new_todo.title
-      todo.priority = new_todo.priority
-      todo.date = new_todo.date
-      todo.description = new_todo.description
-      localStorage.setItem(project.title, JSON.stringify(todos));
-    }
+  const remove = (projectId, todoId) => {
+    const todos = all(projectId);
+    const project = getProject(projectId);
+    todos.splice(todoId, 1);
+    localStorage.setItem(project.title, JSON.stringify(todos));
+  };
+
+  const edit = (projectId, todoId, newTodo) => {
+    const todos = all(projectId);
+    const todo = todos[todoId];
+    const project = getProject(projectId);
+    todo.title = newTodo.title;
+    todo.priority = newTodo.priority;
+    todo.date = newTodo.date;
+    todo.description = newTodo.description;
+    todo.isCompleted = newTodo.isCompleted;
+    localStorage.setItem(project.title, JSON.stringify(todos));
+  };
 
 
-    const get = (project_id, todo_id) => {
-      const todos = all(project_id)
-      return todos[todo_id]
-    }
+  const get = (projectId, todoId) => {
+    const todos = all(projectId);
+    return todos[todoId];
+  };
 
-    const getProject = (id) => {
-      return projectModel().get(id)
-    }
-
-
-    return { todo, all, save, get, remove, getProject, edit };
-}
+  return {
+    todo, all, save, get, remove, getProject, edit,
+  };
+};
 
 export default todoModel;

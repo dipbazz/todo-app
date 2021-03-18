@@ -1,32 +1,38 @@
 const todoController = (todoModel, todoView) => {
-    let model = todoModel();
-    let view = todoView();
+  const model = todoModel();
+  const view = todoView();
 
-    const addTodo = (title,priority,dueDate,description,project_id, id = null) => {
-      const new_todo = model.todo(title, priority, dueDate, description)
-      console.log(id)
-      if (id) {
-        model.edit(project_id, id, new_todo)
-      } else {
-        model.save(new_todo, project_id);
-      }
+  const addTodo = (title, priority, dueDate, description, projectId, id = null) => {
+    const newTodo = model.todo(title, priority, dueDate, description);
+    if (id) {
+      model.edit(projectId, id, newTodo);
+    } else {
+      model.save(newTodo, projectId);
     }
+  };
 
-    const showTodos = (project_id = 0) => {
-      view.render(project_id,model.getProject(project_id), model.all(project_id));
-    }
+  const showTodos = (projectId = 0) => {
+    view.render(projectId, model.getProject(projectId), model.all(projectId));
+  };
 
-    const removeTodo = (project_id, todo_id) => {
-      model.remove(project_id, todo_id);
-    }
+  const removeTodo = (projectId, todoId) => {
+    model.remove(projectId, todoId);
+  };
 
-    const editTodo = (project_id, todo_id) => {
-      view.updateTodoModel(model.get(project_id,todo_id),todo_id)
+  const editTodo = (projectId, todoId) => {
+    view.updateTodoModel(model.get(projectId, todoId), todoId);
+  };
 
-    }
+  const completeTodo = (projectId, todoId) => {
+    const todo = model.get(projectId, todoId);
+    todo.isCompleted = !todo.isCompleted;
+    model.edit(projectId, todoId, todo);
+  };
 
 
-    return { addTodo, showTodos, removeTodo, editTodo };
-}
+  return {
+    addTodo, showTodos, removeTodo, editTodo, completeTodo,
+  };
+};
 
 export default todoController;
