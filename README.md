@@ -18,6 +18,10 @@
 - Bootstrap
 - Local storage
 
+## Live demo
+
+[Live demo link](https://keep-your-task.netlify.app/)
+
 ## Getting Started
 
 - Clone the repo `git@github.com:dipbazz/todo-app.git`
