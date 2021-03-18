@@ -38,15 +38,18 @@ const todoView = () => {
 
   const render = (projectId, project, todos) => {
     const element = `
-      <h1 class="text-center" data-project-index="${projectId}" id="project-title">${project.title}</h1>
-      <div  class="d-flex justify-content-end mb-2">
+      
+      <div  class="d-flex justify-content-between pr-2  py-2">
+      <h3 class="text-center" data-project-index="${projectId}" id="project-title">${project.title}</h3>
         <button type="button" class="btn btn-success add-todo" data-toggle="modal" data-target="#todoModal">
           Add Task
         </button>
+        
       </div>
+      <hr/>
       <ul class="list-group list-group-flush mb-4">
       ${todos.map((todo, index) => `
-        <li class="task-list-item mb-3 list-group-item list-group-item-action border-${priorityClass(todo.priority)} border-left border-bottom-0">
+        <li class="task-list-item mb-3 list-group-item list-group-item-action border-${priorityClass(todo.priority)} border-left border-bottom-0 ${todo.isCompleted ? 'task-completed' : ''}">
             <div class="d-flex align-items-center">
               <input type="checkbox" id="todo${index}" data-todo=${index} data-project="${projectId}" class="custom-checkbox todo-checkmark" ${todo.isCompleted ? 'checked' : ''}>
               <label for="todo${index}" class="ml-3 d-flex justify-content-between w-100 align-items-center mb-0">

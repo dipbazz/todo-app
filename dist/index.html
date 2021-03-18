@@ -12,17 +12,21 @@
 <body>
 
 
-  <div class="container">
-    <div class="row h-100">
-      <div class="col-md-4 bg-light">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3 pr-0 project-box">
         <aside>
-          <h1>Projects</h1>
+          <div class="d-flex justify-content-between py-2 pr-2 mb-2">
+            <h3>Projects</h3>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#projectModal">
+              <i class='fa fa-plus'></i>
+            </button>
+          </div>
+          <hr/>
           <div id="projects">
 
           </div>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#projectModal">
-            +Add project
-          </button>
+          
         </aside>
       </div>
 

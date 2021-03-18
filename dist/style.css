@@ -9,3 +9,27 @@
   box-shadow: 0 0 5px rgb(0 0 0 / 10%);
   border-left-width: 5px !important;
 }
+
+.project-box {
+  min-height: 100vh;
+  background-color: #f1f2f6;
+}
+
+.project-list-group {
+  list-style: none;
+  min-width: 100%;
+}
+
+.project-list-group > li {
+  padding: 10px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.project-list-group > li:hover {
+  background-color: #fff;
+}
+
+.task-completed {
+  text-decoration: line-through;
+}
