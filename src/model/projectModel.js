@@ -6,8 +6,10 @@ const projectModel = () => {
   const save = (project) => {
     const projects = all();
     if (projects) {
-      projects.push(project);
-      localStorage.setItem('projects', JSON.stringify(projects));
+      if (!projects.some(item => item.title === project.title)) {
+        projects.push(project);
+        localStorage.setItem('projects', JSON.stringify(projects));
+      }
     } else {
       localStorage.setItem('projects', JSON.stringify([project]));
     }
