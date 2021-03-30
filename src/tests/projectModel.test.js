@@ -1,15 +1,15 @@
-import projectModel from "../model/projectModel";
+import projectModel from '../model/projectModel';
 
-describe("should test project model", () => {
-  test("should get default added project", () => {
+describe('should test project model', () => {
+  test('should get default added project', () => {
     const project = projectModel().get(0);
-    expect(project.title).toEqual("Today");
+    expect(project.title).toEqual('Today');
   });
 
-  test("should save the project", () => {
-    const projectObj = { title: "Home" };
-    const project = projectModel().save(projectObj);
+  test('should save the project', () => {
+    const projectObj = { title: 'Home' };
+    projectModel().save(projectObj);
     const projects = projectModel().all();
-    expect(projects).toEqual([{ title: "Today" }, { title: "Home" }]);
+    expect(projects).toEqual([{ title: 'Today' }, { title: 'Home' }]);
   });
 });
