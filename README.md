@@ -31,6 +31,11 @@
 - On the terminal run `npm run start` open up the live server
 
 
+## Testing
+
+The test runner we used to test our code is [jest](https://jestjs.io/)
+
+To test the code run cmd `npm test`
 
 ## Authors
 
