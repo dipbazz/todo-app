@@ -4,7 +4,7 @@
   "description": "This is a javascript  project about creating a todo app to keep track to user's daily work.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "build:dev": "webpack --mode development",
     "build": "webpack --mode production",
     "start": "webpack serve --mode development --open"
@@ -20,10 +20,12 @@
   },
   "homepage": "https://github.com/dipbazz/todo-app#readme",
   "devDependencies": {
+    "@babel/preset-env": "^7.13.12",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
+    "jest": "^26.6.3",
     "stylelint": "^13.3.3",
     "stylelint-config-standard": "^20.0.0",
     "stylelint-csstree-validator": "^1.9.0",
